@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Maak een modal
         const modal = document.createElement("div");
-        modal.className = "modal fade";
+        modal.className = "modal fade projectsModal";
         modal.id = `projectModal${index}`;
         modal.tabIndex = -1;
         modal.innerHTML = `

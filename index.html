@@ -8,9 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 <body>
     <header class="p-3 mb-3 border-bottom bg-dark">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
@@ -64,235 +66,86 @@
                         <h3 class="card-heading font-italic">Programming languages</h3>
                     </div>
                     <div class="card-body">
-                        <p class="text-center">Html</p>
-                        <div class="progress" role="progressbar" aria-label="Default striped" aria-valuenow="100"
-                            aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bar-striped" style="width: 100%"></div>
+                        <!-- Nav Tabs voor Frontend & Backend en Database & Overig -->
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active border border-black" id="frontend-backend-tab" data-bs-toggle="tab"
+                                data-bs-target="#frontend-backend" type="button" role="tab" aria-controls="frontend-backend" aria-selected="true">
+                                Frontend & Backend
+                            </button>
+                            <button class="nav-link border border-black" id="database-overig-tab" data-bs-toggle="tab"
+                                data-bs-target="#database-overig" type="button" role="tab" aria-controls="database-overig" aria-selected="false">
+                                Database & Overig
+                            </button>
                         </div>
-                        <hr>
-                        <p class="text-center">Css</p>
-                        <div class="progress" role="progressbar" aria-label="Success striped" aria-valuenow="100"
-                            aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bar-striped bg-success" style="width: 100%"></div>
-                        </div>
-                        <hr>
-                        <p class="text-center">Javascript</p>
-                        <div class="progress" role="progressbar" aria-label="Info striped" aria-valuenow="80"
-                            aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bar-striped bg-info" style="width: 80%"></div>
-                        </div>
-                        <hr>
-                        <p class="text-center">Bootstrap</p>
-                        <div class="progress" role="progressbar" aria-label="Warning striped" aria-valuenow="75"
-                            aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 75%"></div>
-                        </div>
-                        <hr>
-                        <p class="text-center">PHP</p>
-                        <div class="progress" role="progressbar" aria-label="Danger striped" aria-valuenow="85"
-                            aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bar-striped bg-danger" style="width: 85%"></div>
-                        </div>
-                        <hr>
-                        <p class="text-center">Mysql</p>
-                        <div class="progress" role="progressbar" aria-label="dark subtle striped" aria-valuenow="90"
-                            aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bar-striped bg-dark-subtle" style="width: 90%"></div>
+                        
+                        <!-- Tab content -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <!-- Frontend & Backend Chart -->
+                            <div class="tab-pane fade show active" id="frontend-backend" role="tabpanel" aria-labelledby="frontend-backend-tab">
+                                <!-- Canvas voor Frontend Radar Chart -->
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <canvas id="frontendRadarChart"></canvas>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <canvas id="backendRadarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Database & Overig Chart -->
+                            <div class="tab-pane fade" id="database-overig" role="tabpanel" aria-labelledby="database-overig-tab">
+                                <!-- Canvas voor Database Radar Chart -->
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <canvas id="databaseRadarChart"></canvas>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <canvas id="otherRadarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="col-12 col-md-6 my-3">
                 <div class="card h-100">
-                    <div class="card-header">
-                        <h3 class="card-heading text-center font-italic font-weight-bold">Certificates</h3>
+                    <div class="card-header text-center">
+                        <h3 class="card-heading font-italic font-weight-bold">Certificates</h3>
                     </div>
-                    <div class="card-body text-center">
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active border border-black" id="bit-academy" data-bs-toggle="tab"
-                                    data-bs-target="#bit" type="button" role="tab" aria-controls="bit"
-                                    aria-selected="true">Bit</button>
-                                <button class="nav-link border border-black" id="zenva-certificates" data-bs-toggle="tab"
-                                    data-bs-target="#zenva" type="button" role="tab" aria-controls="zenva"
-                                    aria-selected="true">Zenva</button>
-                                <button class="nav-link border border-black" id="mammoth-certificates" data-bs-toggle="tab"
-                                    data-bs-target="#mammoth" type="button" role="tab" aria-controls="mammoth"
-                                    aria-selected="true">Mammoth</button>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="certificateTabs">
+                            <li class="nav-item">
+                                <a class="nav-link active border border-black" id="bit-tab" data-bs-toggle="pill" href="#bit" data-bs-target="#bit">Bit Certificaten</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link border border-black" id="zenva-tab" data-bs-toggle="pill" href="#zenva" data-bs-target="#zenva">Zenva Certificaten</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link border border-black" id="mammoth-tab" data-bs-toggle="pill" href="#mammoth" data-bs-target="#mammoth">Mammoth Certificaten</a>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="bit" role="tabpanel" aria-labelledby="bit-tab">
+                                <div id="bit-certificates" class="certificate-list row"></div>
                             </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active p-3" id="bit" role="tabpanel"
-                                aria-labelledby="bit-academy">
-                                <h4 class="certificates-title">Bit Academy</h4>
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <hr>
-                                        <h4 class="area">Frond-end</h4>
-                                        <div class="certificates border border-black">Html/css beginner</div>
-                                        <div class="certificates border border-black">Html/css advanced</div>
-                                        <div class="certificates border border-black">Javascript Beginner</div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <hr>
-                                        <h4 class="area">Back end</h4>
-                                        <div class="certificates border border-black">PHP Beginner</div>
-                                        <div class="certificates border border-black">PHP Novice</div>
-                                        <div class="certificates border border-black">PHP Web</div>
-                                        <div class="certificates border border-black">Databases beginner</div>
-                                        <div class="certificates border border-black">Database PDO</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <hr>
-                                    <h4 class="area">Overig</h4>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="certificates border border-black">Command Line Beginner</div>
-                                        <div class="certificates border border-black">Git Intermediate</div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="certificates border border-black">Scrum Theorie</div>
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="zenva" role="tabpanel" aria-labelledby="zenva-tab">
+                                <div id="zenva-certificates" class="certificate-list row"></div>
                             </div>
-                            <div class="tab-pane fade p-3" id="zenva" role="tabpanel"
-                                aria-labelledby="zenva-certificates">
-                                <h4 class="certificates-title">Zenva</h4>
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <div class="certificates border border-black">Create Your First Responsive Website</div>
-                                        <div class="certificates border border-black">Intro to Web Development with HTML and CSS</div>
-                                        <div class="certificates border border-black">Jr Coder Mini-Degree</div>
-                                        <div class="certificates border border-black">Game Design Academy</div>
-                                        <div class="certificates border border-black">C++ Programming Academy</div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="certificates border border-black">Bite-Sized HTML [2019]</div>
-                                        <div class="certificates border border-black">The Complete Excel Productivity Bundle</div>
-                                        <div class="certificates border border-black">Game Artwork Academy</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade p-3" id="mammoth" role="tabpanel"
-                                aria-labelledby="mammoth-certificates">
-                                <h4 class="certificates-title">Mammoth interactive</h4>
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                                        <div class="certificates border border-black">Web app design in React</div>
-                                        <div class="certificates border border-black">Build your first wordpress theme</div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="certificates border border-black">Custom templates wordpress</div>
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="mammoth" role="tabpanel" aria-labelledby="mammoth-tab">
+                                <div id="mammoth-certificates" class="certificate-list row"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            
         </div>
     </div>
-    <!-- <div class="projects container-fluid" id="projects">
-        <h2 class="text-center section-heading mt-3">Projects</h2>
-        <div class="row">
-            <div class="col-12 col-md-6 col-xl-3 my-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/1022/200/200.jpg?hmac=MjK2sur6luq2UfxMPWBFBuPyvZYyYLYvQH9kCmEGJRY"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 1</h5>
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, in?</p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-3 my-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/382/200/200.jpg?hmac=1RBvTrTJY2s3gldIAai5u3hsPDx6IEzsQg9uUC-MARo"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 2</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, quam!
-                        </p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-3 my-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/834/200/200.jpg?hmac=vcoSQ7O6i2vxWANscm-9EGrw0MNqLzU3X0pQZ1o5ovI"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 3</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolore!</p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-3 my-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/879/200/200.jpg?hmac=_4fWz44KoPcfzc5VRuEhms_-fXjdx1VsijYO3xVD9b0"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 4</h5>
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, sit.</p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-12 col-md-6 col-xl-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/451/200/200.jpg?hmac=ZxfTfjtPhONiVjaPd1HG3lQuTRy_puiwOF6qStaMe7g"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 5</h5>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, voluptates.
-                        </p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/266/200/200.jpg?hmac=gOu6kjZljo9d4wdKoXa6CepA5W07XTIynwZmcl-b1AM"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 6</h5>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias,
-                            eveniet.</p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6  col-xl-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/351/200/200.jpg?hmac=E2C8OwTRNgbEan5RzifMH73ENtpcsHSr45mGFQk5mPU"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 7</h5>
-                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid,
-                            blanditiis.</p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-3">
-                <div class="card h-100">
-                    <img src="https://fastly.picsum.photos/id/411/200/200.jpg?hmac=OVYhfXZUSeIPuy2vvqvn56l4Y8YZjUzJ57HIaxnjdTQ"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Project 8</h5>
-                        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla, ipsum.</p>
-                        <a href="#" class="btn btn-primary">Bekijk project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <div class="projects container-fluid" id="projects">
         <h2 class="text-center section-heading mt-3">Projects</h2>
         <div class="row">
@@ -356,6 +209,8 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
         <script src="./projects.js" defer></script>
+        <script src="./skills.js" defer></script>
+        <script src="./certificates.js"></script>
 </body>
 
 </html>
