@@ -13,7 +13,9 @@ const projects = [
                 caption: "Een andere afbeelding die Project 1 toont"
             }
         ],
-        details: "Dit is een uitgebreide beschrijving van Project 1."
+        details: "Dit is een uitgebreide beschrijving van Project 1.",
+        github: "https://github.com/jouwgebruikersnaam/project1",  // GitHub link van het project
+        video: "https://www.youtube.com/embed/VIDEO_ID"  // Optionele video van YouTube (embed link)
     },
     {
         title: "Project 2",
@@ -24,7 +26,9 @@ const projects = [
                 caption: "Afbeelding van Project 2"
             }
         ],
-        details: "Dit is een uitgebreide beschrijving van Project 2."
+        details: "Dit is een uitgebreide beschrijving van Project 2.",
+        github: "https://github.com/jouwgebruikersnaam/project2",  // GitHub link van het project
+        video: "https://www.youtube.com/embed/ANOTHER_VIDEO_ID"  // Optionele video van YouTube (embed link)
     }
 ];
 
@@ -57,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.id = `projectModal${index}`;
         modal.tabIndex = -1;
         modal.innerHTML = `
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">${project.title}</h5>
@@ -95,9 +99,20 @@ document.addEventListener("DOMContentLoaded", () => {
                                 `;
                             }).join('')}
                         </div>
+                        <!-- Video Embed Section (optional) -->
+                        ${project.video ? `
+                            <div class="mt-4">
+                                <h5>Bekijk de video:</h5>
+                                <iframe width="100%" height="400" src="${project.video}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        ` : ''}
+                        <!-- GitHub Repository Link -->
+                        <div class="mt-4">
+                            <a href="${project.github}" target="_blank" class="btn btn-outline-primary">Bekijk GitHub Repository</a>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
                     </div>
                 </div>
             </div>
