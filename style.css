@@ -1,0 +1,113 @@
+.banner {
+  background-image: url("Images/domenico-loia-hGV2TfOh0ns-unsplash.jpg");
+  background-size: cover;
+}
+
+.banner .container-fluid {
+  justify-content: center;
+  height: 50vw;
+}
+
+.titel {
+  font-style: italic;
+  color: #ffccd4;
+  background-color: #a9a9a9;
+  max-width: 30%;
+  margin: 10px auto;
+}
+
+.contact.btn {
+  max-width: 25%;
+  margin: 0 auto;
+  border: 1px dashed darkblue;
+  background-color: rgba(169, 169, 169, 0.5);
+}
+
+.card {
+  background-color: #ffccd4;
+}
+.contact-section img {
+  max-width: 100px;
+}
+footer {
+  background: #ffccd4;
+}
+
+@media (max-width: 991px) {
+  .centered-img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.modal.modal-fullscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dim the background */
+    z-index: 1050; /* Ensure it's above other elements */
+}
+
+.modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    height: 100%;
+    border: none;
+    border-radius: 0; /* Remove rounded corners */
+}
+
+/* Zorg ervoor dat de carrousel-afbeeldingen goed passen */
+.carousel-inner img {
+    object-fit: contain;
+    max-height: 400px; /* Zorg ervoor dat de afbeeldingen niet te groot worden */
+}
+
+/* Positioneer de captions onder de afbeelding in plaats van in het midden */
+.carousel-caption {
+    position: absolute;
+    bottom: 10px; /* Zet de caption dichter bij de onderkant */
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparante achtergrond voor de tekst */
+    color: white;
+    padding: 10px;
+}
+
+/* Stijl de miniatuurafbeeldingen */
+.carousel-thumbnails {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.carousel-thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+/* Highlight de thumbnail wanneer deze is geselecteerd */
+.carousel-thumbnail.active-thumbnail {
+    border: 2px solid #007bff;
+}
+
+/* Zorg ervoor dat de carrousel niet automatisch scrollend is */
+.carousel {
+    transition: none;
+}
