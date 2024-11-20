@@ -86,40 +86,6 @@ footer {
     transition: none;
 }
 
-
-/* test dingen */
-
-/* Certificaat card stijl */
-/* Container voor de certificaten */
-.certificate-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); /* Dit zorgt ervoor dat de certificaten naast elkaar kunnen staan met een min-width van 45% */
-  gap: 15px;
-  margin-top: 20px;
-}
-
-/* Stijl voor de certificaten als kaarten */
-.certificate {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #f8f9fa;
-  font-size: 14px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-/* Hover effect voor de certificaat cards */
-.certificate:hover {
-  transform: scale(1.05);
-  background-color: #e2e6ea;
-}
-
-.certificate-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
 /* Zorg ervoor dat de nav-pills er goed uitzien */
 .nav-pills .nav-link {
   border-radius: 0;
@@ -132,6 +98,9 @@ footer {
   color: white;
 }
 
+#schoolTabContent {
+  margin-top: 10px;
+}
 .modal.modal-fullscreen.projectsModal {
   display: flex;
   align-items: center;
@@ -158,4 +127,14 @@ footer {
   border-radius: 0; /* Remove rounded corners */
 }
 
+.skill-card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #fff
+}
+
+.skill-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 

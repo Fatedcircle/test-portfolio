@@ -7,12 +7,13 @@
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <header class="p-3 mb-3 border-bottom bg-dark">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
@@ -68,20 +69,23 @@
                     <div class="card-body">
                         <!-- Nav Tabs voor Frontend & Backend en Database & Overig -->
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active border border-black" id="frontend-backend-tab" data-bs-toggle="tab"
-                                data-bs-target="#frontend-backend" type="button" role="tab" aria-controls="frontend-backend" aria-selected="true">
+                            <button class="nav-link active border border-black" id="frontend-backend-tab"
+                                data-bs-toggle="tab" data-bs-target="#frontend-backend" type="button" role="tab"
+                                aria-controls="frontend-backend" aria-selected="true">
                                 Frontend & Backend
                             </button>
                             <button class="nav-link border border-black" id="database-overig-tab" data-bs-toggle="tab"
-                                data-bs-target="#database-overig" type="button" role="tab" aria-controls="database-overig" aria-selected="false">
+                                data-bs-target="#database-overig" type="button" role="tab"
+                                aria-controls="database-overig" aria-selected="false">
                                 Database & Overig
                             </button>
                         </div>
-                        
+
                         <!-- Tab content -->
                         <div class="tab-content" id="nav-tabContent">
                             <!-- Frontend & Backend Chart -->
-                            <div class="tab-pane fade show active" id="frontend-backend" role="tabpanel" aria-labelledby="frontend-backend-tab">
+                            <div class="tab-pane fade show active" id="frontend-backend" role="tabpanel"
+                                aria-labelledby="frontend-backend-tab">
                                 <!-- Canvas voor Frontend Radar Chart -->
                                 <div class="row">
                                     <div class="col-12 col-md-6">
@@ -92,9 +96,10 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Database & Overig Chart -->
-                            <div class="tab-pane fade" id="database-overig" role="tabpanel" aria-labelledby="database-overig-tab">
+                            <div class="tab-pane fade" id="database-overig" role="tabpanel"
+                                aria-labelledby="database-overig-tab">
                                 <!-- Canvas voor Database Radar Chart -->
                                 <div class="row">
                                     <div class="col-12 col-md-6">
@@ -109,105 +114,94 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-12 col-md-6 my-3">
                 <div class="card h-100">
                     <div class="card-header text-center">
                         <h3 class="card-heading font-italic font-weight-bold">Certificates</h3>
                     </div>
                     <div class="card-body">
-                        <ul class="nav nav-tabs" id="certificateTabs">
-                            <li class="nav-item">
-                                <a class="nav-link active border border-black" id="bit-tab" data-bs-toggle="pill" href="#bit" data-bs-target="#bit">Bit Certificaten</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link border border-black" id="zenva-tab" data-bs-toggle="pill" href="#zenva" data-bs-target="#zenva">Zenva Certificaten</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link border border-black" id="mammoth-tab" data-bs-toggle="pill" href="#mammoth" data-bs-target="#mammoth">Mammoth Certificaten</a>
-                            </li>
-                        </ul>
-                        
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="bit" role="tabpanel" aria-labelledby="bit-tab">
-                                <div id="bit-certificates" class="certificate-list row"></div>
+                        <!-- Tabs voor Scholen -->
+                        <ul class="nav nav-tabs" id="schoolTabs"></ul>
+
+                        <!-- Tab-inhoud voor Scholen -->
+                        <div class="tab-content" id="schoolTabContent"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="projects container-fluid" id="projects">
+            <h2 class="text-center section-heading mt-3">Projects</h2>
+            <div class="row">
+                <!-- Dynamische kaarten worden hier toegevoegd -->
+            </div>
+        </div>
+        <div class="contact-section" id="contact">
+            <div class="container">
+                <h2 class="section-heading mt-3 text-center">Contact</h2>
+                <div class="row">
+                    <div class="col-12 col-md-8 my-3">
+                        <form action="POST">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="first-name" class="form-label d-block text-center">First name</label>
+                                    <input type="text" class="form-control" id="first-name" aria-label="first-name"
+                                        name="first-name">
+                                </div>
+                                <div class="col">
+                                    <label for="last-name" class="form-label d-block text-center">Last name</label>
+                                    <input type="text" class="form-control" id="last-name" aria-label="last-name"
+                                        name="last-name">
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="zenva" role="tabpanel" aria-labelledby="zenva-tab">
-                                <div id="zenva-certificates" class="certificate-list row"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="company" class="form-label d-block text-center">Company</label>
+                                    <input type="text" class="form-control" id="company" name="company"
+                                        aria-label="company">
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="mammoth" role="tabpanel" aria-labelledby="mammoth-tab">
-                                <div id="mammoth-certificates" class="certificate-list row"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="bericht" class="form-label d-block text-center">Je bericht</label>
+                                    <textarea name="bericht" id="bericht" class="form-control"></textarea>
+                                </div>
                             </div>
+                            <div class="row my-3">
+                                <div class="col text-center"><button type="submit"
+                                        class="btn btn-primary mt-2">Submit</button></div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex flex-column align-items-center my-3">
+                        <p>My avatar and location information</p>
+                        <img src="Images/avatar.jpg" alt="my avatar">
+                        <div class="text-center"><i class="bi bi-geo-alt"></i>
+                            <p class="adres">Hoorn, 1111AA, Nederland</p>
+                        </div>
+                        <div class="text-center"><i class="bi bi-phone-vibrate"></i>
+                            <p class="phone"><a href="tel:+">_01 23456789</a></p>
+                        </div>
+                        <div class="text-center"><i class="bi bi-envelope"></i>
+                            <p class="email"><a href="mailto:#">random@random.random</a></p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
         </div>
-    </div>
-    <div class="projects container-fluid" id="projects">
-        <h2 class="text-center section-heading mt-3">Projects</h2>
-        <div class="row">
-            <!-- Dynamische kaarten worden hier toegevoegd -->
-        </div>
-    </div>
-    <div class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-heading mt-3 text-center">Contact</h2>
-            <div class="row">
-                <div class="col-12 col-md-8 my-3">
-                    <form action="POST">
-                        <div class="row">
-                            <div class="col">
-                                <label for="first-name" class="form-label d-block text-center">First name</label>
-                                <input type="text" class="form-control" id="first-name" aria-label="first-name" name="first-name">
-                            </div>
-                            <div class="col">
-                                <label for="last-name" class="form-label d-block text-center">Last name</label>
-                                <input type="text" class="form-control" id="last-name" aria-label="last-name" name="last-name">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="company" class="form-label d-block text-center">Company</label>
-                                <input type="text" class="form-control" id="company" name="company" aria-label="company">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="bericht" class="form-label d-block text-center">Je bericht</label>
-                                <textarea name="bericht" id="bericht" class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="row my-3"><div class="col text-center"><button type="submit" class="btn btn-primary mt-2">Submit</button></div></div>
-                        
-                    </form>
-                </div>
-                <div class="col-12 col-md-4 d-flex flex-column align-items-center my-3">
-                    <p>My avatar and location information</p>
-                    <img src="Images/avatar.jpg" alt="my avatar">
-                    <div class="text-center"><i class="bi bi-geo-alt"></i>
-                    <p class="adres">Hoorn, 1111AA, Nederland</p></div>
-                    <div class="text-center"><i class="bi bi-phone-vibrate"></i>
-                    <p class="phone"><a href="tel:+">_01 23456789</a></p></div>
-                    <div class="text-center"><i class="bi bi-envelope"></i>
-                    <p class="email"><a href="mailto:#">random@random.random</a></p></div>
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 text-center my-3"><small>Made by Jennifer</small></div>
+                    <div class="col-6 my-3"><i class="bi bi-c-circle">Copyright by Jennifer</i></div>
                 </div>
             </div>
-        </div>
-    </div>
-    <footer>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-6 text-center my-3"><small>Made by Jennifer</small></div>
-                <div class="col-6 my-3"><i class="bi bi-c-circle">Copyright by Jennifer</i></div>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
         <script src="./projects.js" defer></script>
         <script src="./skills.js" defer></script>
         <script src="./certificates.js"></script>

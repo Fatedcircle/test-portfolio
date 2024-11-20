@@ -1,104 +1,141 @@
-// Voorbeeld van je JavaScript-objecten
-const items = [
+// Data definitie
+const schoolData = [
     {
-        title: 'Hoofditem 1',
-        description: 'Beschrijving van hoofditem 1',
-        subitems: [
-            { name: 'Subitem 1a', detail: 'Details over subitem 1a' },
-            { name: 'Subitem 1b', detail: 'Details over subitem 1b' }
-        ]
+      name: "School 1",
+      departments: [
+        {
+          name: "Front-End Development",
+          skills: [
+            {
+              name: "HTML & CSS",
+              certLink: "certificates/html-css.pdf"
+            },
+            {
+              name: "JavaScript Basics",
+              certLink: "certificates/javascript-basics.pdf"
+            }
+          ]
+        },
+        {
+          name: "UI/UX Design",
+          skills: [
+            {
+              name: "Wireframing",
+              certLink: "certificates/wireframing.pdf"
+            },
+            {
+              name: "Prototyping",
+              certLink: "certificates/prototyping.pdf"
+            }
+          ]
+        }
+      ]
     },
     {
-        title: 'Hoofditem 2',
-        description: 'Beschrijving van hoofditem 2',
-        subitems: [
-            { name: 'Subitem 2a', detail: 'Details over subitem 2a' },
-            { name: 'Subitem 2b', detail: 'Details over subitem 2b' }
-        ]
-    }
-];
-
-// Functie om de kaarten dynamisch in te laden
-function loadItems() {
-    const container = document.getElementById('cards-container');
-
-    items.forEach((item, index) => {
-        // Maak de card voor elk hoofditem
-        const card = document.createElement('div');
-        card.classList.add('card', 'mb-3');
-        card.style.maxWidth = '18rem';
-
-        // Maak de card body
-        const cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-
-        // Titel van het hoofditem
-        const cardTitle = document.createElement('h5');
-        cardTitle.classList.add('card-title');
-        cardTitle.textContent = item.title;
-        cardBody.appendChild(cardTitle);
-
-        // Beschrijving van het hoofditem
-        const cardText = document.createElement('p');
-        cardText.classList.add('card-text');
-        cardText.textContent = item.description;
-        cardBody.appendChild(cardText);
-
-        // Maak een knop die de subitems toont of verbergt
-        const toggleButton = document.createElement('button');
-        toggleButton.classList.add('btn', 'btn-primary', 'mt-3');
-        toggleButton.textContent = 'Toon subitems';
-        
-        // Maak een container voor de subitems die we willen verbergen of tonen
-        const subitemContainer = document.createElement('div');
-        subitemContainer.classList.add('subitem-container', 'collapse');
-
-        // Voeg de subitems toe aan de subitem-container
-        if (item.subitems && item.subitems.length > 0) {
-            const subitemList = document.createElement('ul');
-            subitemList.classList.add('list-group', 'list-group-flush');
-
-            item.subitems.forEach(subitem => {
-                const listItem = document.createElement('li');
-                listItem.classList.add('list-group-item');
-
-                const subitemTitle = document.createElement('strong');
-                subitemTitle.textContent = subitem.name;
-                listItem.appendChild(subitemTitle);
-
-                const subitemDetail = document.createElement('p');
-                subitemDetail.textContent = subitem.detail;
-                listItem.appendChild(subitemDetail);
-
-                subitemList.appendChild(listItem);
-            });
-
-            subitemContainer.appendChild(subitemList);
-        }
-
-        // Voeg de event listener toe om de subitems in te klappen/uit te klappen
-        toggleButton.addEventListener('click', () => {
-            const isCollapsed = subitemContainer.classList.contains('collapse');
-            if (isCollapsed) {
-                subitemContainer.classList.remove('collapse');
-                toggleButton.textContent = 'Verberg subitems';
-            } else {
-                subitemContainer.classList.add('collapse');
-                toggleButton.textContent = 'Toon subitems';
+      name: "School 2",
+      departments: [
+        {
+          name: "Back-End Development",
+          skills: [
+            {
+              name: "Node.js",
+              certLink: "certificates/nodejs.pdf"
+            },
+            {
+              name: "Database Management",
+              certLink: "certificates/database-management.pdf"
             }
-        });
-
-        // Voeg de knop en de subitem-container toe aan de card body
-        cardBody.appendChild(toggleButton);
-        cardBody.appendChild(subitemContainer);
-
-        // Voeg de card body toe aan de card
-        card.appendChild(cardBody);
-
-        // Voeg de card toe aan de container
-        container.appendChild(card);
+          ]
+        },
+        {
+          name: "Cloud Computing",
+          skills: [
+            {
+              name: "AWS Basics",
+              certLink: "certificates/aws-basics.pdf"
+            },
+            {
+              name: "Azure Fundamentals",
+              certLink: "certificates/azure-fundamentals.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ];
+  
+  // Dynamische rendering functie
+  function renderSchoolData(data) {
+    const navTabs = document.getElementById("nav-tabs");
+    const tabContent = document.getElementById("tab-content");
+  
+    data.forEach((school, schoolIndex) => {
+      // School Tabs genereren
+      const isActiveSchool = schoolIndex === 0 ? "active" : "";
+      const schoolTab = document.createElement("button");
+      schoolTab.className = `nav-link ${isActiveSchool}`;
+      schoolTab.id = `tab-${schoolIndex}`;
+      schoolTab.setAttribute("data-bs-toggle", "tab");
+      schoolTab.setAttribute("data-bs-target", `#school-content-${schoolIndex}`);
+      schoolTab.textContent = school.name;
+      navTabs.appendChild(schoolTab);
+  
+      // School content container
+      const schoolContent = document.createElement("div");
+      schoolContent.className = `tab-pane fade ${isActiveSchool ? "show active" : ""}`;
+      schoolContent.id = `school-content-${schoolIndex}`;
+  
+      // Afdelingen Tabs voor elke school
+      const departmentNav = document.createElement("ul");
+      departmentNav.className = "nav nav-tabs mb-3";
+      departmentNav.id = `department-tabs-${schoolIndex}`;
+  
+      const departmentContent = document.createElement("div");
+      departmentContent.className = "tab-content";
+  
+      school.departments.forEach((department, departmentIndex) => {
+        const isActiveDepartment = departmentIndex === 0 ? "active" : "";
+  
+        // Department Tabs genereren
+        const departmentTab = document.createElement("button");
+        departmentTab.className = `nav-link ${isActiveDepartment}`;
+        departmentTab.id = `department-tab-${schoolIndex}-${departmentIndex}`;
+        departmentTab.setAttribute("data-bs-toggle", "tab");
+        departmentTab.setAttribute("data-bs-target", `#department-content-${schoolIndex}-${departmentIndex}`);
+        departmentTab.textContent = department.name;
+        departmentNav.appendChild(departmentTab);
+  
+        // Department content genereren
+        const departmentPane = document.createElement("div");
+        departmentPane.className = `tab-pane fade ${isActiveDepartment ? "show active" : ""}`;
+        departmentPane.id = `department-content-${schoolIndex}-${departmentIndex}`;
+        departmentPane.innerHTML = department.skills.map(skill => `
+          <div class="card-body">
+            <h5>${skill.name}</h5>
+            <button class="btn btn-primary" onclick="openCertificateModal('${skill.certLink}')">Bekijk Certificaat</button>
+          </div>
+        `).join("");
+        departmentContent.appendChild(departmentPane);
+      });
+  
+      // Voeg afdelingen nav-tabs en content toe aan school content
+      schoolContent.appendChild(departmentNav);
+      schoolContent.appendChild(departmentContent);
+  
+      tabContent.appendChild(schoolContent);
     });
-}
-
-// Laad de items wanneer de pagina is geladen
-window.onload = loadItems;
+  }
+  
+  // Certificaat modal openen
+  function openCertificateModal(link) {
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = `<iframe src="${link}" style="width:100%; height:400px;"></iframe>`;
+    const modal = new bootstrap.Modal(document.getElementById("certificateModal"));
+    modal.show();
+  }
+  
+  // HTML structuur dynamisch genereren op paginalaad
+  window.onload = function () {
+    renderSchoolData(schoolData);
+  };
+  
